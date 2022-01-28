@@ -25,7 +25,6 @@ export const Title = styled.h1`
   font-size: 50px;
 `;
 
-
 export const Card = styled.div`
   margin: 0;
   border-radius: 10px;
@@ -44,7 +43,7 @@ export const LoginField = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1rem;
-`
+`;
 
 export const IconPortraitFrame = styled.div`
   width: 32px;
@@ -53,22 +52,37 @@ export const IconPortraitFrame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 export const IconPortrait = styled.img`
   width: 16px;
   height: 16px;
-`
+`;
 
 export const StyledInput = styled.input`
   background-color: rgba(123, 123, 233, 0.5);
+  font-family: "Open Sans", sans-serif;
   border: none;
   padding: 0 5px;
   width: 100%;
-  color: #FFF;
+  color: #fff;
   &::placeholder {
-    color: #EEE;
+    color: #eee;
   }
   &:focus {
     outline: none;
+    background-color: rgb(238, 144, 56);
   }
-`
+`;
+
+export const Button = styled.button`
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(123, 123, 233);
+  color: #FFF;
+  &:hover {
+    background-color: rgb(238, 144, 56);
+    cursor: pointer;
+  }
+`;

@@ -7,7 +7,9 @@ import {
   StyledInput,
 } from "../../styles/styles";
 
-const Input: React.FC<{ name: string; image: string }> = (props) => {
+const Input: React.FC<{ name: string; image: string; type: string; }> = (
+  props
+) => {
   const capitalizedName =
     props.name.charAt(0).toUpperCase() + props.name.slice(1);
   return (
@@ -21,6 +23,7 @@ const Input: React.FC<{ name: string; image: string }> = (props) => {
         id={props.name}
         name={props.name}
         placeholder={capitalizedName}
+        type={props.type}
       />
     </LoginField>
   );
