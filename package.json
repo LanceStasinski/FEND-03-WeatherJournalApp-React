@@ -1,0 +1,10 @@
+{
+  "name": "FEND-03-WeatherJournalApp-React",
+  "version": "1.0.0",
+  "description": "My weather journal app built with React with addtional features such as authentication and CRUD operations.",
+  "main": "index.js",
+  "repository": "https://github.com/LanceStasinski/FEND-03-WeatherJournalApp-React",
+  "author": "LanceStasinski <lance.stasinski@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
