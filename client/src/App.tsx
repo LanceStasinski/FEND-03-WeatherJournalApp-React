@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.css";
-import styled from "styled-components";
 
-import { Main, Container, Title } from "./styles/styles";
-import AuthCard from "./components/AuthCard";
+import { Main, Container } from "./styles/styles";
+import AuthCard from "./components/authentication/AuthCard";
 import GlobalFonts from "./styles/fonts/fonts";
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
     <Main>
       <GlobalFonts />
       <Container>
-        <Title>Weather Journal</Title>
         <AuthCard></AuthCard>
       </Container>
     </Main>

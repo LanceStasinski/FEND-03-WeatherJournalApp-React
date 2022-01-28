@@ -11,31 +11,64 @@ export const Main = styled.main`
 
 export const Container = styled.div`
   width: 90%;
-  margin-left: 5%;
 
-  @media (min-width: 990px) {
+  @media (min-width: 768px) {
     width: 70%;
-    margin-left: 15%;
   }
 `;
 
 export const Title = styled.h1`
   font-family: "Flamenco", sans-serif;
-  margin: 0;
-  color: white;
+  margin: 20px;
+  color: rgb(123, 123, 233);
   text-align: center;
-  padding: 10vh 0;
   font-size: 50px;
 `;
 
+
 export const Card = styled.div`
-  border-radius: 5px;
-  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.6);
   background-color: white;
 `;
 
 export const Form = styled.form`
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
+export const LoginField = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+`
+
+export const IconPortraitFrame = styled.div`
+  width: 32px;
+  height: 32px;
+  background-color: rgb(123, 123, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const IconPortrait = styled.img`
+  width: 16px;
+  height: 16px;
+`
+
+export const StyledInput = styled.input`
+  background-color: rgba(123, 123, 233, 0.5);
+  border: none;
+  padding: 0 5px;
+  width: 100%;
+  color: #FFF;
+  &::placeholder {
+    color: #EEE;
+  }
+  &:focus {
+    outline: none;
+  }
+`
