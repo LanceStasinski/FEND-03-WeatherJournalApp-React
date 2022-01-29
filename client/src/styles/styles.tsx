@@ -23,6 +23,19 @@ export const Title = styled.h1`
   color: rgb(123, 123, 233);
   text-align: center;
   font-size: 50px;
+  animation: changeColor 7s infinite;
+
+  @keyframes changeColor {
+    0% {
+      color: rgb(123, 123, 233);
+    }
+    50% {
+      color: rgb(238, 144, 56);
+    }
+    100% {
+      color: rgb(123, 123, 233)
+    }
+  }
 `;
 
 export const Card = styled.div`
@@ -75,14 +88,24 @@ export const StyledInput = styled.input`
 `;
 
 export const Button = styled.button`
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   border: none;
   margin-top: 1rem;
   padding: 0.5rem;
   background-color: rgb(123, 123, 233);
-  color: #FFF;
+  color: #fff;
   &:hover {
     background-color: rgb(238, 144, 56);
     cursor: pointer;
   }
+`;
+
+export const StyledBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
 `;
