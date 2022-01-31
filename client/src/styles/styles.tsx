@@ -111,5 +111,11 @@ export const StyledBackdrop = styled.div`
 `;
 
 export const Header = styled.header`
+  color: var( --secondary-color);
+  background-color: var( --primary-color);
+`
 
+export const Footer = styled.footer`
+  color: var( --secondary-color);
+  background-color: var( --primary-color);
 `
