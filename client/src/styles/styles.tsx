@@ -110,12 +110,20 @@ export const StyledBackdrop = styled.div`
   z-index: 10;
 `;
 
-export const Header = styled.header`
+export const ModalHeading = styled.h2`
   color: var( --secondary-color);
-  background-color: var( --primary-color);
+  margin: 0;
+`
+
+export const HR = styled.hr`
+  border-top: 1pt solid var(--secondary-color);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 `
 
 export const Footer = styled.footer`
-  color: var( --secondary-color);
-  background-color: var( --primary-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `

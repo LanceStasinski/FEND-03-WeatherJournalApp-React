@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
 
 import Backdrop from "./Backdrop";
-import { Card, Header, Footer } from "../../styles/styles";
+import { Card, ModalHeading, HR, Footer } from "../../styles/styles";
 
 const ModalOverlay = styled(Card)`
   box-shadow: none;
@@ -12,6 +12,7 @@ const ModalOverlay = styled(Card)`
   position: fixed;
   left: 15%;
   width: 70%;
+  padding: 0.5rem;
 
   @media (min-width: 768px) {
     width: 40%;
@@ -39,14 +40,11 @@ const Modal: React.FC<Props> = (props) => {
         classNames="slide-down"
         nodeRef={nodeRef}
       >
-        <ModalOverlay>
-          <Header>
-            <h2>{props.header}</h2>
-          </Header>
+        <ModalOverlay ref={nodeRef}>
+          <ModalHeading>{props.header}</ModalHeading>
+          <HR />
           {props.children}
-          <Footer>
-            {props.footer}
-          </Footer>
+          <Footer>{props.footer}</Footer>
         </ModalOverlay>
       </CSSTransition>
     </React.Fragment>
