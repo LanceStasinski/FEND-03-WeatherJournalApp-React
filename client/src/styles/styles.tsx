@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Main = styled.main`
   background-image: linear-gradient(
     to bottom,
-    rgb(238, 144, 56),
-    rgb(123, 123, 233)
+    var( --secondary-color),
+    var( --primary-color)
   );
   height: 100vh;
 `;
@@ -20,20 +20,20 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-family: "Flamenco", sans-serif;
   margin: 20px;
-  color: rgb(123, 123, 233);
+  color: var( --primary-color);
   text-align: center;
   font-size: 50px;
   animation: changeColor 7s infinite;
 
   @keyframes changeColor {
     0% {
-      color: rgb(123, 123, 233);
+      color: var( --primary-color);
     }
     50% {
-      color: rgb(238, 144, 56);
+      color: var( --secondary-color);
     }
     100% {
-      color: rgb(123, 123, 233)
+      color: var( --primary-color)
     }
   }
 `;
@@ -61,7 +61,7 @@ export const LoginField = styled.div`
 export const IconPortraitFrame = styled.div`
   width: 32px;
   height: 32px;
-  background-color: rgb(123, 123, 233);
+  background-color: var( --primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +83,7 @@ export const StyledInput = styled.input`
   }
   &:focus {
     outline: none;
-    background-color: rgb(238, 144, 56);
+    background-color: var( --secondary-color);
   }
 `;
 
@@ -92,10 +92,10 @@ export const Button = styled.button`
   border: none;
   margin-top: 1rem;
   padding: 0.5rem;
-  background-color: rgb(123, 123, 233);
+  background-color: var( --primary-color);
   color: #fff;
   &:hover {
-    background-color: rgb(238, 144, 56);
+    background-color: var( --secondary-color);
     cursor: pointer;
   }
 `;
@@ -109,3 +109,7 @@ export const StyledBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
 `;
+
+export const Header = styled.header`
+
+`

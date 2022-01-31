@@ -7,10 +7,6 @@ import lockIcon from "../../assets/lockIcon.png";
 import { Card, Form, Title, Button } from "../../styles/styles";
 import Input from "./Input";
 
-interface Props {
-  isLoggedIn: boolean;
-}
-
 const LoginCard = styled(Card)`
   position: absolute;
   top: 20vh;
@@ -50,7 +46,7 @@ const AuthCard: React.FC<{
   onLogin: (e: FormEvent) => void;
   isLoggedIn: boolean;
 }> = (props) => {
-  const nodeRef = React.useRef(null);
+  const nodeRef = useRef(null);
   return (
     <CSSTransition
       in={!props.isLoggedIn}

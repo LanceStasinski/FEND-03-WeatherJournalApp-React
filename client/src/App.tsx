@@ -1,12 +1,11 @@
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 import "./App.css";
 import { Main, Container } from "./styles/styles";
 import AuthCard from "./components/authentication/AuthCard";
-import GlobalFonts from "./styles/fonts/fonts";
+import GlobalFonts from "./styles/global";
 
 function App() {
-  const nodeRef = useRef(null);
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const loginHandler = (e: FormEvent) => {
