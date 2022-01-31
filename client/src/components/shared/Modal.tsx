@@ -12,7 +12,7 @@ const ModalOverlay = styled(Card)`
   position: fixed;
   left: 15%;
   width: 70%;
-  padding: 0.5rem;
+  padding: 1rem;
 
   @media (min-width: 768px) {
     width: 40%;

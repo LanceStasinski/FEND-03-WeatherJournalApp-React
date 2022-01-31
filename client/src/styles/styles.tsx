@@ -113,6 +113,11 @@ export const StyledBackdrop = styled.div`
 export const ModalHeading = styled.h2`
   color: var( --secondary-color);
   margin: 0;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
 `
 
 export const HR = styled.hr`

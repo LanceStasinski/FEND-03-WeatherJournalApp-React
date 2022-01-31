@@ -17,6 +17,11 @@ const ErrorButton = styled(Button)`
 
 const StyledP = styled.p`
   color: #666;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
 `
 
 const ErrorModal: React.FC<{
