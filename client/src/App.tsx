@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 
 import "./App.css";
 import { Main, Container } from "./styles/styles";
-import Auth from "./components/authentication/Auth";
 import GlobalStyles from "./styles/global";
+
+import Auth from './components/authentication/Auth'
+// const Auth = lazy(() => import("./components/authentication/Auth"));
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

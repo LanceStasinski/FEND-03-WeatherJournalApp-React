@@ -7,6 +7,7 @@ import lockIcon from "../../assets/lockIcon.png";
 import { Card, Form, Title, Button } from "../../styles/styles";
 import Input from "./Input";
 import ErrorModal from "../shared/ErrorModal";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const LoginCard = styled(Card)`
   position: fixed;
