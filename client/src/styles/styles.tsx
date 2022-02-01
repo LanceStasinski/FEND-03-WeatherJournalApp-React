@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Main = styled.main`
   background-image: linear-gradient(
     to bottom,
-    var( --secondary-color),
-    var( --primary-color)
+    var(--secondary-color),
+    var(--primary-color)
   );
   height: 100vh;
 `;
@@ -20,20 +20,20 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-family: "Flamenco", sans-serif;
   margin: 20px;
-  color: var( --primary-color);
+  color: var(--primary-color);
   text-align: center;
   font-size: 50px;
   animation: changeColor 7s infinite;
 
   @keyframes changeColor {
     0% {
-      color: var( --primary-color);
+      color: var(--primary-color);
     }
     50% {
-      color: var( --secondary-color);
+      color: var(--secondary-color);
     }
     100% {
-      color: var( --primary-color)
+      color: var(--primary-color);
     }
   }
 `;
@@ -61,7 +61,7 @@ export const LoginField = styled.div`
 export const IconPortraitFrame = styled.div`
   width: 32px;
   height: 32px;
-  background-color: var( --primary-color);
+  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +83,7 @@ export const StyledInput = styled.input`
   }
   &:focus {
     outline: none;
-    background-color: var( --secondary-color);
+    background-color: var(--secondary-color);
   }
 `;
 
@@ -92,11 +92,20 @@ export const Button = styled.button`
   border: none;
   margin-top: 1rem;
   padding: 0.5rem;
-  background-color: var( --primary-color);
+  background-color: var(--primary-color);
   color: #fff;
   &:hover {
-    background-color: var( --secondary-color);
+    animation: changeBtnColor 300ms linear forwards;
     cursor: pointer;
+  }
+
+  @keyframes changeBtnColor {
+    from {
+      background-color: var(--primary-color);
+    }
+    to {
+      background-color: var(--secondary-color);
+    }
   }
 `;
 
@@ -111,24 +120,24 @@ export const StyledBackdrop = styled.div`
 `;
 
 export const ModalHeading = styled.h2`
-  color: var( --secondary-color);
+  color: var(--secondary-color);
   margin: 0;
   text-align: center;
 
   @media screen and (min-width: 768px) {
     text-align: left;
   }
-`
+`;
 
 export const HR = styled.hr`
   border-top: 1pt solid var(--secondary-color);
   border-bottom: none;
   border-left: none;
   border-right: none;
-`
+`;
 
 export const Footer = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: center;
-`
+`;
