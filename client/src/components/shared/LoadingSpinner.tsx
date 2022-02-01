@@ -8,6 +8,7 @@ const Overlay = styled.div`
   height: 100%;
   width: 100%;
   position: absolute;
+  z-index: 50;
   top: 0;
   left: 0;
   background: transparent;
