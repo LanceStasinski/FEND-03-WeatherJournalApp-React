@@ -1,4 +1,4 @@
-import React, {lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import "./App.css";
@@ -9,15 +9,16 @@ import { AuthContext } from "./components/shared/context/auth-context";
 import LoadingSpinner from "./components/shared/LoadingSpinner";
 import { useAuth } from "./components/shared/hooks/auth-hook";
 const Auth = lazy(() => import("./components/authentication/Auth"));
+const Journal = lazy(() => import("./components/journal/Journal"));
 
 function App() {
-  const {token, login, logout, userId, username} = useAuth();
+  const { token, login, logout, userId, username } = useAuth();
 
   let routes;
   if (token) {
     routes = (
       <Routes>
-        <Route path="/journal" />
+        <Route path="/journal" element={<Journal />} />
         <Route path="*" element={<Navigate to="/journal" />} />
       </Routes>
     );

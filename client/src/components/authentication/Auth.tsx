@@ -47,17 +47,23 @@ const StyledP = styled.p`
 
 const Auth: React.FC = () => {
   const nodeRef = useRef(null);
-  const [error, setError] = useState<string | undefined>(undefined);
+  const [formError, setFormError] = useState<string | undefined>(undefined);
   const authCtx = useContext(AuthContext);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const loginHandler = async (e: FormEvent) => {
     e.preventDefault();
+    let error = false;
     const username = document.getElementById("username") as HTMLInputElement;
     const password = document.getElementById("password") as HTMLInputElement;
-    if (username.value.length < 1) setError("Please enter a username.");
-    if (password.value.length < 5)
-      setError("Please enter a password with at least 5 characters.");
+    if (username.value.length < 1) {
+      setFormError("Please enter a username.");
+      error = true;
+    }
+    if (password.value.length < 5) {
+      setFormError("Please enter a password with at least 5 characters.");
+      error = true;
+    }
 
     if (!error) {
       try {
@@ -81,13 +87,14 @@ const Auth: React.FC = () => {
     }
   };
 
-  const clearErrorHandler = () => {
-    setError(undefined);
+  const clearFormErrorHandler = () => {
+    setFormError(undefined);
   };
 
   return (
     <React.Fragment>
-      <ErrorModal onClear={clearErrorHandler} error={error || httpError} />
+      <ErrorModal onClear={clearError} error={httpError} />
+      <ErrorModal onClear={clearFormErrorHandler} error={formError} />
       <LoginCard ref={nodeRef}>
         <Title>Weather Journal</Title>
         <Form>
