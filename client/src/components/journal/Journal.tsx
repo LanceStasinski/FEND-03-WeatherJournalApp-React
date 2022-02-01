@@ -7,10 +7,13 @@ import {
   User,
   Controls,
   SettingIcon,
+  CloudIcon,
+  Container
 } from "../../styles/styles";
 import { AuthContext } from "../shared/context/auth-context";
 import { useHttpClient } from "../shared/hooks/http-hook";
 import gearIcon from "../../assets/gearIcon.png";
+import cloudIcon from "../../assets/cloudIcon.png";
 
 const DUMMY = {};
 
@@ -66,6 +69,9 @@ const Journal: React.FC = () => {
           <SettingIcon src={gearIcon} alt="gear icon" />
         </Controls>
       </Header>
+      <Container>
+        <CloudIcon src={cloudIcon} alt='Cloud with plus symbol' />
+      </Container>
 
       <Button onClick={addEntry}>Add Entry</Button>
     </React.Fragment>

@@ -10,11 +10,16 @@ export const Main = styled.main`
 `;
 
 export const Container = styled.div`
+
   width: 90%;
+  margin-left: 5%;
+  border: white 1pt solid;
 
   @media (min-width: 768px) {
     width: 70%;
+    margin-left: 15%;
   }
+
 `;
 
 export const Title = styled.h1`
@@ -148,18 +153,18 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-`
+`;
 
 export const User = styled.div`
   font-family: "Flamenco", sans-serif;
-  color: #FFF;
+  color: #fff;
   font-size: 32px;
-`
+`;
 
 export const Controls = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const SettingIcon = styled.img`
   width: 24px;
@@ -178,4 +183,26 @@ export const SettingIcon = styled.img`
       transform: rotate(360deg);
     }
   }
-`
+`;
+
+export const CloudIcon = styled.img`
+  height: 100px;
+  width: 100px;
+
+  &:hover {
+    animation: float 2s infinite ease-in-out;
+    cursor: pointer;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(0, 0px);
+    }
+    50% {
+      transform: translate(0, 10px);
+    }
+    100% {
+      transform: translate(0, -0px);
+    }
+  }
+`;
