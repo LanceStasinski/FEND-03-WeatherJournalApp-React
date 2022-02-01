@@ -141,3 +141,41 @@ export const Footer = styled.footer`
   flex-direction: row;
   justify-content: center;
 `;
+
+export const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+`
+
+export const User = styled.div`
+  font-family: "Flamenco", sans-serif;
+  color: #FFF;
+  font-size: 32px;
+`
+
+export const Controls = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const SettingIcon = styled.img`
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+    animation: spin 2.5s infinite linear;
+    cursor: pointer;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`
