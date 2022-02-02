@@ -10,7 +10,9 @@ export const Main = styled.main`
 `;
 
 export const Container = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 90%;
   margin-left: 5%;
   border: white 1pt solid;
@@ -19,7 +21,6 @@ export const Container = styled.div`
     width: 70%;
     margin-left: 15%;
   }
-
 `;
 
 export const Title = styled.h1`
@@ -205,4 +206,55 @@ export const CloudIcon = styled.img`
       transform: translate(0, -0px);
     }
   }
+`;
+
+export const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+`;
+
+export const EntryWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 20% 80%;
+  overflow: hidden;
+`;
+
+export const Subject = styled.h2`
+  margin: 0;
+  font-family: 'Flamenco', sans-serif;
+`;
+
+export const Date = styled.p`
+  font-family: "Open Sans", sans-serif;
+  color: #666;
+  margin: 0;
+`;
+
+export const TextBox = styled.div`
+  overflow-y: scroll;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  scrollbar-width: thin;
+
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+`;
+
+export const EntryText = styled.p`
+  color: #666;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+
 `;
