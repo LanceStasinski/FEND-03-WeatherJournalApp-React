@@ -11,7 +11,16 @@ const ErrorButton = styled(Button)`
   margin: 0;
 
   &:hover {
-    background-color: var(--primary-color);
+    animation: turnBlue 300ms linear forwards;
+  }
+
+  @keyframes turnBlue {
+    from {
+      background-color: var(--secondary-color);
+    }
+    to {
+      background-color: var(--primary-color);
+    }
   }
 `
 
