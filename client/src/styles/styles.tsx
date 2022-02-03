@@ -15,7 +15,6 @@ export const Container = styled.div`
   align-items: center;
   width: 90%;
   margin-left: 5%;
-  border: white 1pt solid;
 
   @media (min-width: 768px) {
     width: 70%;
@@ -221,6 +220,7 @@ export const EntryWrapper = styled.div`
 `;
 
 export const Subject = styled.h2`
+  color: #444;
   margin: 0;
   font-family: "Flamenco", sans-serif;
 `;
@@ -233,7 +233,7 @@ export const Date = styled.p`
 
 export const TextBox = styled.div`
   overflow-y: scroll;
-  padding: 0 1rem;
+  padding: 0 2rem;
   margin-top: 1rem;
   scrollbar-width: thin;
 

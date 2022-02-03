@@ -14,6 +14,8 @@ const EntryHeader = styled(Header)`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 1rem 0 0 2rem;
+  margin-bottom: 1rem;
 `;
 
 interface Props {
