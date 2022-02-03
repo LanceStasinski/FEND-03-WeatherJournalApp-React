@@ -222,7 +222,7 @@ export const EntryWrapper = styled.div`
 
 export const Subject = styled.h2`
   margin: 0;
-  font-family: 'Flamenco', sans-serif;
+  font-family: "Flamenco", sans-serif;
 `;
 
 export const Date = styled.p`
@@ -260,24 +260,31 @@ export const EntryText = styled.p`
 export const WeatherWrapper = styled.div`
   display: grid;
   grid-template-rows: 20% 80%;
-  background-color: rgba(151, 128, 189, 0.5);
+  background-color: var(--fourth-color);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-`
+`;
 
 export const WeatherUI = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
-`
+`;
 
 export const WeatherSection = styled.section`
-  padding:0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 export const WeatherIcon = styled.img`
+  margin-top: 1rem;
   width: 125px;
   height: 125px;
-`
+`;
+
+export const Info = styled.p`
+  font-family: "Open Sans Medium", sans-serif;
+  margin: 0;
+  color: #444;
+`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import {
@@ -8,17 +8,24 @@ import {
   WeatherSection,
   WeatherIcon,
   Subject,
+  Info,
 } from "../../styles/styles";
 import windIcon from "../../assets/windIcon.png";
+import { AuthContext } from "../shared/context/auth-context";
 
 const WeatherHeader = styled(Header)`
   justify-content: center;
 `;
 
+const Location = styled(Subject)`
+  color: #444;
+  text-align: center;
+`;
+
 const WindImage = styled(WeatherIcon)`
   width: 50px;
   height: 50px;
-  margin: 2rem 1rem 2rem 1rem;
+  margin: 3rem 1rem 2.7rem 1rem;
 `;
 
 interface Props {
@@ -35,10 +42,33 @@ interface Props {
 }
 
 const WeatherInfo: React.FC<Props> = (props) => {
+  const authCtx = useContext(AuthContext);
+
+  const convertTemp = (tempK: number) => {
+    if (authCtx.unitPreference === "imperial") {
+      const tempF = Math.floor(((tempK - 273.15) * 9) / 5 + 32);
+      return `${tempF} °F`;
+    } else if (authCtx.unitPreference === "metric") {
+      const tempC = Math.floor(tempK - 273.15);
+      return `${tempC} °C`;
+    } else {
+      return `${tempK} K`;
+    }
+  };
+
+  const convertWind = (speed: number) => {
+    if (authCtx.unitPreference === "imperial") {
+      const mph = Math.floor(speed * 2.237);
+      return `${mph} mph`;
+    } else {
+      return `${speed} m/s`;
+    }
+  };
+
   return (
     <WeatherWrapper>
       <WeatherHeader>
-        <Subject>{props.location}</Subject>
+        <Location>{props.location}</Location>
       </WeatherHeader>
       <WeatherUI>
         <WeatherSection>
@@ -46,7 +76,7 @@ const WeatherInfo: React.FC<Props> = (props) => {
             src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`}
             alt={props.weather.description}
           />
-          <p>{`${props.weather.temp} K`}</p>
+          <Info>{convertTemp(props.weather.temp)}</Info>
         </WeatherSection>
         <WeatherSection>
           <WindImage
@@ -54,6 +84,7 @@ const WeatherInfo: React.FC<Props> = (props) => {
             alt={`Wind direction - ${props.weather.wind.deg}`}
             style={{ transform: `rotate(${props.weather.wind.deg}deg)` }}
           />
+          <Info>{convertWind(props.weather.wind.speed)}</Info>
         </WeatherSection>
       </WeatherUI>
     </WeatherWrapper>

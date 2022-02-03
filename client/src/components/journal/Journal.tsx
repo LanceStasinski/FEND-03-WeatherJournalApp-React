@@ -46,8 +46,8 @@ const DUMMY: Entries = [
       icon: "10d",
       temp: 273.77,
       wind: {
-        speed: 0.45,
-        deg: 170,
+        speed: 3,
+        deg: 45,
       },
     },
     location: "Orono",
