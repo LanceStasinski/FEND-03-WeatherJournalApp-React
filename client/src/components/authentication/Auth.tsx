@@ -81,7 +81,9 @@ const Auth: React.FC = () => {
         authCtx.login(
           responseData.userId,
           responseData.token,
-          responseData.username
+          responseData.username,
+          responseData.unitPreference,
+          responseData.zipCode,
         );
       } catch (error) {}
     }

@@ -237,7 +237,6 @@ export const TextBox = styled.div`
   margin-top: 1rem;
   scrollbar-width: thin;
 
-
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -256,5 +255,29 @@ export const EntryText = styled.p`
   color: #666;
   font-family: "Open Sans", sans-serif;
   margin: 0;
-
 `;
+
+export const WeatherWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 20% 80%;
+  background-color: rgba(151, 128, 189, 0.5);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+`
+
+export const WeatherUI = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+`
+
+export const WeatherSection = styled.section`
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const WeatherIcon = styled.img`
+  width: 125px;
+  height: 125px;
+`

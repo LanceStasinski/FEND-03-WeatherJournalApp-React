@@ -18,6 +18,7 @@ import EntriesList from "./EntriesList";
 
 export interface Entry {
   weather: {
+    description: string;
     icon: string;
     temp: number;
     wind: {
@@ -41,7 +42,8 @@ export type Entries = Entry[];
 const DUMMY: Entries = [
   {
     weather: {
-      icon: "04d",
+      description: 'overcast clouds',
+      icon: "10d",
       temp: 273.77,
       wind: {
         speed: 0.45,

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import "./App.css";
-import { Main, Container } from "./styles/styles";
+import { Main } from "./styles/styles";
 import GlobalStyles from "./styles/global";
 import { AuthContext } from "./components/shared/context/auth-context";
 
@@ -12,7 +12,16 @@ const Auth = lazy(() => import("./components/authentication/Auth"));
 const Journal = lazy(() => import("./components/journal/Journal"));
 
 function App() {
-  const { token, login, logout, userId, username } = useAuth();
+  const {
+    token,
+    login,
+    logout,
+    userId,
+    username,
+    unitPreference,
+    zipCode,
+    updatePreferences,
+  } = useAuth();
 
   let routes;
   if (token) {
@@ -34,11 +43,14 @@ function App() {
   return (
     <AuthContext.Provider
       value={{
-        login: login,
-        username: username,
-        logout: logout,
-        userId: userId,
-        token: token,
+        login,
+        username,
+        logout,
+        userId,
+        token,
+        unitPreference,
+        zipCode,
+        updatePreferences
       }}
     >
       <GlobalStyles />
