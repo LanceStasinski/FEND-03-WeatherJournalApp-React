@@ -233,6 +233,14 @@ export const EntryWrapper = styled.div`
   overflow: hidden;
 `;
 
+export const SubjectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 0 0 1rem;
+`;
+
 export const Subject = styled.h2`
   color: #444;
   margin: 0;
@@ -244,6 +252,37 @@ export const Date = styled.p`
   color: #666;
   margin: 0;
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
+`;
+
+export const EntryAction = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+  padding: 0;
+  margin: 0 0 0 0.25rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 100px;
+
+  &:hover {
+    background-color: var(--fourth-color);
+    cursor: pointer;
+  }
+`;
+
+export const ActionIcon = styled.img`
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+`
 
 export const TextBox = styled.div`
   overflow-y: scroll;
