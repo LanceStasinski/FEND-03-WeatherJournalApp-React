@@ -234,6 +234,7 @@ export const EntryWrapper = styled.div`
   display: grid;
   grid-template-rows: 20% 80%;
   overflow: hidden;
+  height: 20rem;
 `;
 
 export const SubjectWrapper = styled.div`
@@ -259,7 +260,13 @@ export const Date = styled.p`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding-right: 1rem;
+  padding-right: 0;
+  margin: 0.5rem;
+
+  @media screen and (min-width: 300px) {
+    padding-right: 1rem;
+    margin: 0;
+  }
 `;
 
 export const EntryAction = styled.button`
@@ -285,12 +292,12 @@ export const ActionIcon = styled.img`
   margin: 0;
   width: 24px;
   height: 24px;
-`
+`;
 
 export const TextBox = styled.div`
   overflow-y: scroll;
   padding: 0 2rem 2rem 2rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
@@ -305,6 +312,10 @@ export const TextBox = styled.div`
     background-color: var(--secondary-color);
     border-radius: 5px;
   }
+
+  @media screen and (min-width: 300px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const EntryText = styled.p`
@@ -317,8 +328,13 @@ export const WeatherWrapper = styled.div`
   display: grid;
   grid-template-rows: 20% 80%;
   background-color: var(--fourth-color);
-  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  @media screen and (min-width: 990px) {
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
 `;
 
 export const WeatherUI = styled.div`
@@ -333,6 +349,26 @@ export const WeatherSection = styled.section`
   align-items: center;
 `;
 
+export const WeatherData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: 481px) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 990px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+`;
+
 export const WeatherIcon = styled.img`
   width: 125px;
   height: 125px;
@@ -342,6 +378,14 @@ export const Info = styled.p`
   font-family: "Open Sans Medium", sans-serif;
   margin: 0;
   color: #444;
+
+  @media screen and (min-width: 481px) {
+    margin: 0 0 0 1rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    margin: 0;
+  }
 `;
 
 export const WeatherH3 = styled.h3`

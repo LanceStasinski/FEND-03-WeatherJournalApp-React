@@ -17,8 +17,14 @@ import {
 } from "../../styles/styles";
 
 const EntryHeader = styled(Header)`
-  display: grid;
-  grid-template-columns: 80% 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media screen and (min-width: 300px) {
+    display: grid;
+    grid-template-columns: 80% 20%;
+  }
 `;
 
 interface Props {

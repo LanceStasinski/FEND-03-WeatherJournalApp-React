@@ -9,7 +9,8 @@ import {
   WeatherIcon,
   Subject,
   Info,
-  WeatherH3
+  WeatherH3,
+  WeatherData,
 } from "../../styles/styles";
 import windIcon from "../../assets/windIcon.png";
 import { AuthContext } from "../shared/context/auth-context";
@@ -25,12 +26,42 @@ const Location = styled(Subject)`
 
 const SkyWeatherSection = styled(WeatherSection)`
   padding-left: 0.5rem;
+
+  @media screen and (min-width: 481px) {
+    padding-left: 0rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    padding-left: 0.5rem;
+  }
+`;
+
+const SkyInfo = styled(Info)`
+  margin-right: 0;
+
+
+  @media screen and (min-width: 481px) {
+    margin-right: 2.5rem;
+    margin-left: 0;
+  }
+
+  @media screen and (min-width: 990px) {
+    margin-right: 0;
+  }
 `
 
 const WindImage = styled(WeatherIcon)`
   width: 50px;
   height: 50px;
-  margin: 2rem 1rem 2.75rem 1rem;
+  margin: 2rem 1rem 2.7rem 1rem;
+
+  @media screen and (min-width: 481px) {
+    margin-left: 0rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    margin-left: 1rem;
+  }
 `;
 
 interface Props {
@@ -78,20 +109,24 @@ const WeatherInfo: React.FC<Props> = (props) => {
       <WeatherUI>
         <SkyWeatherSection>
           <WeatherH3>Weather</WeatherH3>
-          <WeatherIcon
-            src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`}
-            alt={props.weather.description}
-          />
-          <Info>{convertTemp(props.weather.temp)}</Info>
+          <WeatherData>
+            <WeatherIcon
+              src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`}
+              alt={props.weather.description}
+            />
+            <SkyInfo>{convertTemp(props.weather.temp)}</SkyInfo>
+          </WeatherData>
         </SkyWeatherSection>
         <WeatherSection>
           <WeatherH3>Wind</WeatherH3>
-          <WindImage
-            src={windIcon}
-            alt={`Wind direction - ${props.weather.wind.deg}`}
-            style={{ transform: `rotate(${props.weather.wind.deg}deg)` }}
-          />
-          <Info>{convertWind(props.weather.wind.speed)}</Info>
+          <WeatherData>
+            <WindImage
+              src={windIcon}
+              alt={`Wind direction - ${props.weather.wind.deg}`}
+              style={{ transform: `rotate(${props.weather.wind.deg}deg)` }}
+            />
+            <Info>{convertWind(props.weather.wind.speed)}</Info>
+          </WeatherData>
         </WeatherSection>
       </WeatherUI>
     </WeatherWrapper>
