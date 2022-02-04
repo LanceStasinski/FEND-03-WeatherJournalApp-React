@@ -9,6 +9,7 @@ import {
   WeatherIcon,
   Subject,
   Info,
+  WeatherH3
 } from "../../styles/styles";
 import windIcon from "../../assets/windIcon.png";
 import { AuthContext } from "../shared/context/auth-context";
@@ -22,10 +23,14 @@ const Location = styled(Subject)`
   text-align: center;
 `;
 
+const SkyWeatherSection = styled(WeatherSection)`
+  padding-left: 0.5rem;
+`
+
 const WindImage = styled(WeatherIcon)`
   width: 50px;
   height: 50px;
-  margin: 3rem 1rem 2.7rem 1rem;
+  margin: 2rem 1rem 2.75rem 1rem;
 `;
 
 interface Props {
@@ -71,14 +76,16 @@ const WeatherInfo: React.FC<Props> = (props) => {
         <Location>{props.location}</Location>
       </WeatherHeader>
       <WeatherUI>
-        <WeatherSection>
+        <SkyWeatherSection>
+          <WeatherH3>Weather</WeatherH3>
           <WeatherIcon
             src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`}
             alt={props.weather.description}
           />
           <Info>{convertTemp(props.weather.temp)}</Info>
-        </WeatherSection>
+        </SkyWeatherSection>
         <WeatherSection>
+          <WeatherH3>Wind</WeatherH3>
           <WindImage
             src={windIcon}
             alt={`Wind direction - ${props.weather.wind.deg}`}

@@ -11,6 +11,16 @@ const EntryCard = styled(Card)`
   height: 20rem;
   display: grid;
   grid-template-columns: 70% 30%;
+  animation: slideInRight 1s ease-out forwards;
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(-10rem);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 `;
 
 const EntryItem: React.FC<{ entry: Entry }> = (props) => {

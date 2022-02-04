@@ -188,9 +188,11 @@ export const SettingIcon = styled.img`
 export const CloudIcon = styled.img`
   height: 100px;
   width: 100px;
+  animation: float 2s infinite ease-in-out;
+  margin-bottom: 2rem;
 
   &:hover {
-    animation: float 2s infinite ease-in-out;
+    animation: enlarge 2s infinite ease-in-out;
     cursor: pointer;
   }
 
@@ -203,6 +205,18 @@ export const CloudIcon = styled.img`
     }
     100% {
       transform: translate(0, -0px);
+    }
+  }
+
+  @keyframes enlarge {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 `;
@@ -233,7 +247,7 @@ export const Date = styled.p`
 
 export const TextBox = styled.div`
   overflow-y: scroll;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
   margin-top: 1rem;
   scrollbar-width: thin;
 
@@ -278,7 +292,6 @@ export const WeatherSection = styled.section`
 `;
 
 export const WeatherIcon = styled.img`
-  margin-top: 1rem;
   width: 125px;
   height: 125px;
 `;
@@ -287,4 +300,11 @@ export const Info = styled.p`
   font-family: "Open Sans Medium", sans-serif;
   margin: 0;
   color: #444;
+`;
+
+export const WeatherH3 = styled.h3`
+  font-family: "Open Sans", sans-serif;
+  color: #444;
+  border-bottom: 1pt solid var(--tertiary-color);
+  margin: 1rem 0 0 0;
 `;
