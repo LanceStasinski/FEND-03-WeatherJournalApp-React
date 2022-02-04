@@ -6,26 +6,40 @@ import Text from "./Text";
 import WeatherInfo from "./WeatherInfo";
 import { Card } from "../../styles/styles";
 
-const EntryCard = styled(Card)`
+interface StyleProps {
+  delay: number;
+}
+
+const EntryCard = styled(Card)<StyleProps>`
   width: 100%;
-  height: 20rem;
-  display: grid;
-  grid-template-columns: 70% 30%;
-  animation: slideInRight 1s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideInRight 0.5s ease-out forwards;
+  animation-delay: ${props => props.delay + "s"};
+
+  @media screen and (min-width: 990px) {
+    height: 20rem;
+    display: grid;
+    grid-template-columns: 70% 30%;
+  }
 
   @keyframes slideInRight {
     from {
       transform: translateX(-10rem);
+      opacity: 0;
     }
     to {
       transform: translateX(0);
+      opacity: 1;
     }
   }
 `;
 
-const EntryItem: React.FC<{ entry: Entry }> = (props) => {
+const EntryItem: React.FC<{entry: Entry, delay: number}> = (props) => {
   return (
-    <EntryCard>
+    <EntryCard delay={props.delay}>
       <Text
         date={props.entry.date}
         subject={props.entry.subject}

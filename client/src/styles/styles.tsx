@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const Main = styled.main`
+export const Backdrop = styled.div`
+  position: fixed;
   background-image: linear-gradient(
     to bottom,
     var(--secondary-color),
     var(--primary-color)
   );
   height: 100vh;
+  width: 100vw;
+  z-index: -100;
 `;
 
 export const Container = styled.div`

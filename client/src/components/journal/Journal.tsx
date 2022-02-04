@@ -60,6 +60,26 @@ const DUMMY: Entries = [
     },
     _id: "e1",
   },
+  {
+    weather: {
+      description: 'overcast clouds',
+      icon: "10d",
+      temp: 273.77,
+      wind: {
+        speed: 3,
+        deg: 45,
+      },
+    },
+    location: "Orono",
+    subject: "A day in Orono",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    date: {
+      month: "February",
+      day: 2,
+      year: 2022,
+    },
+    _id: "e1",
+  },
 ];
 
 const Logout = styled(Button)`

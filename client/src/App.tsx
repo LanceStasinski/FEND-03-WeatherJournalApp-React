@@ -2,10 +2,9 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import "./App.css";
-import { Main } from "./styles/styles";
+import { Backdrop } from "./styles/styles";
 import GlobalStyles from "./styles/global";
 import { AuthContext } from "./components/shared/context/auth-context";
-
 import LoadingSpinner from "./components/shared/LoadingSpinner";
 import { useAuth } from "./components/shared/hooks/auth-hook";
 const Auth = lazy(() => import("./components/authentication/Auth"));
@@ -50,14 +49,15 @@ function App() {
         token,
         unitPreference,
         zipCode,
-        updatePreferences
+        updatePreferences,
       }}
     >
       <GlobalStyles />
       <BrowserRouter>
-        <Main>
+        <Backdrop />
+        <main>
           <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
-        </Main>
+        </main>
       </BrowserRouter>
     </AuthContext.Provider>
   );

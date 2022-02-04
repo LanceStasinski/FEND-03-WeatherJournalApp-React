@@ -7,9 +7,9 @@ import EntryItem from "./EntryItem";
 const EntriesList: React.FC<{ entries: Entries }> = (props) => {
   return (
     <List>
-      {props.entries.map((entry) => (
+      {props.entries.map((entry, index) => (
         <li key={entry._id}>
-          <EntryItem entry={entry} />
+          <EntryItem entry={entry} delay={0.25 * index}/>
         </li>
       ))}
     </List>
