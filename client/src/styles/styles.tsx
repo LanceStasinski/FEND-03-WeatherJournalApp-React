@@ -474,6 +474,7 @@ export const SettingSelect = styled.select`
     outline: none;
     color: var(--primary-color);
     box-shadow: none;
+    
   }
 
   &:hover {
@@ -485,4 +486,9 @@ export const SettingFooter = styled.footer`
   display: flex;
   width: 100%;
   justify-content: space-between;
+`
+
+export const ErrorP = styled.p`
+  color: var(--secondary-color);
+  margin-top: -1rem;
 `

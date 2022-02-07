@@ -65,8 +65,10 @@ export const useAuth = () => {
   const updatePreferences = useCallback((preference, zipCode) => {
     setUnitPreference(preference);
     setZipCode(zipCode);
-    localStorage.setItem("unitPreference", preference);
-    localStorage.setItem("zipCode", zipCode);
+    const storedData = JSON.parse(localStorage.getItem("user") as string);
+    storedData.unitPreference = preference;
+    storedData.zipCode = zipCode;
+    localStorage.setItem("user", JSON.stringify(storedData));
   }, []);
 
   useEffect(() => {
