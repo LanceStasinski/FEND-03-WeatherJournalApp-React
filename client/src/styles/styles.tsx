@@ -169,6 +169,13 @@ export const Controls = styled.div`
   align-items: center;
 `;
 
+export const SettingsBtn = styled.button`
+  padding: 0;
+  margin: 0.25rem 0 0 0;
+  background: none;
+  border: none;
+`;
+
 export const SettingIcon = styled.img`
   width: 24px;
   height: 24px;
@@ -394,3 +401,82 @@ export const WeatherH3 = styled.h3`
   border-bottom: 1pt solid var(--tertiary-color);
   margin: 1rem 0 0 0;
 `;
+
+export const SettingField = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: 468px) {
+    flex-direction: row;
+    align-self: flex-start;
+    align-items: center;
+  }
+`;
+
+export const Label = styled.label`
+  text-align: center;
+  color: #444;
+  padding: 5px 0;
+
+  @media screen and (min-width: 468px) {
+    text-align: left;
+  }
+`;
+
+export const SettingInput = styled.input`
+  border: none;
+  color: #aaa;
+  align-self: center;
+  margin-top: 0.25rem;
+  width: 3rem;
+  font-size: 16px;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+    font-size: 16px;
+    animation: focus 0.1s linear forwards;
+  }
+
+  @media screen and (min-width: 468px) {
+    margin-top: auto;
+  }
+
+  @keyframes focus {
+    from {
+      color: #aaa;
+      background-color: #fff;
+    }
+    to {
+      color: #fff;
+      background-color: var(--primary-color);
+    }
+  }
+`;
+
+export const SettingSelect = styled.select`
+  border: none;
+  background: none;
+  color: #aaa;
+  font-size: 16px;
+  padding: 5px;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    outline: none;
+    color: var(--primary-color);
+    box-shadow: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const SettingFooter = styled.footer`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`

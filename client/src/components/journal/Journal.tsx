@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 
 import {
@@ -9,12 +9,14 @@ import {
   SettingIcon,
   CloudIcon,
   Container,
+  SettingsBtn,
 } from "../../styles/styles";
 import { AuthContext } from "../shared/context/auth-context";
 import { useHttpClient } from "../shared/hooks/http-hook";
 import gearIcon from "../../assets/gearIcon.png";
 import cloudIcon from "../../assets/cloudIcon.png";
 import EntriesList from "./EntriesList";
+import Settings from "./Settings";
 
 export interface Entry {
   weather: {
@@ -42,7 +44,7 @@ export type Entries = Entry[];
 const DUMMY: Entries = [
   {
     weather: {
-      description: 'overcast clouds',
+      description: "overcast clouds",
       icon: "10d",
       temp: 273.77,
       wind: {
@@ -62,7 +64,7 @@ const DUMMY: Entries = [
   },
   {
     weather: {
-      description: 'overcast clouds',
+      description: "overcast clouds",
       icon: "10d",
       temp: 273.77,
       wind: {
@@ -105,6 +107,7 @@ const Logout = styled(Button)`
 
 const Journal: React.FC = () => {
   const authCtx = useContext(AuthContext);
+  const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
@@ -125,13 +128,24 @@ const Journal: React.FC = () => {
     );
   };
 
+  const openSettings = () => {
+    setSettingsIsOpen(true);
+  };
+
+  const closeSettings = () => {
+    setSettingsIsOpen(false);
+  };
+
   return (
     <React.Fragment>
+      <Settings show={settingsIsOpen} onCancel={closeSettings} />
       <Header>
         <User>{authCtx.username}</User>
         <Controls>
           <Logout onClick={logoutHandler}>Logout</Logout>
-          <SettingIcon src={gearIcon} alt="gear icon" />
+          <SettingsBtn onClick={openSettings}>
+            <SettingIcon src={gearIcon} alt="gear icon" />
+          </SettingsBtn>
         </Controls>
       </Header>
       <Container>
