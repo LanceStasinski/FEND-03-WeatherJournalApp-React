@@ -115,7 +115,6 @@ const Journal: React.FC = () => {
   };
 
   const zip = "04473";
-  const units = "imperial";
 
   const addEntry = () => {
     const responseData = sendRequest(
