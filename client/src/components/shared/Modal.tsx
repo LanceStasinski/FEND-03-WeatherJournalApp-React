@@ -3,21 +3,20 @@ import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
 
 import Backdrop from "./Backdrop";
-import { Card, ModalHeading, HR, Footer } from "../../styles/styles";
+import {
+  Card,
+  ModalHeading,
+  HR,
+  Footer,
+  ModalWrapper,
+} from "../../styles/styles";
 
 const ModalOverlay = styled(Card)`
   box-shadow: none;
   top: 20vh;
   z-index: 100;
   position: fixed;
-  left: 15%;
-  width: 70%;
   padding: 1rem;
-
-  @media (min-width: 768px) {
-    width: 40%;
-    left: 30%;
-  }
 `;
 
 interface Props {
@@ -40,12 +39,14 @@ const Modal: React.FC<Props> = (props) => {
         classNames="slide-down"
         nodeRef={nodeRef}
       >
-        <ModalOverlay ref={nodeRef}>
-          <ModalHeading>{props.header}</ModalHeading>
-          <HR />
-          {props.children}
-          <Footer>{props.footer}</Footer>
-        </ModalOverlay>
+        <ModalWrapper>
+          <ModalOverlay ref={nodeRef}>
+            <ModalHeading>{props.header}</ModalHeading>
+            <HR />
+            {props.children}
+            <Footer>{props.footer}</Footer>
+          </ModalOverlay>
+        </ModalWrapper>
       </CSSTransition>
     </React.Fragment>
   );

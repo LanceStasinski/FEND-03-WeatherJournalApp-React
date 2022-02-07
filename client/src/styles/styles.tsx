@@ -12,6 +12,12 @@ export const Backdrop = styled.div`
   z-index: -100;
 `;
 
+export const ModalWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
