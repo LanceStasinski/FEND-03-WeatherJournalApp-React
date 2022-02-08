@@ -33,3 +33,25 @@ code {
   opacity: 0;
   transition: all 300ms;
 }
+
+.grow-enter {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.grow-enter-active {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.grow-exit {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.grow-exit-active {
+  transform: scaleY(0);
+  opacity: 0;
+  transition: all 300ms;
+}

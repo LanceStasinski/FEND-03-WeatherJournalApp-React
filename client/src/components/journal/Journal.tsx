@@ -159,12 +159,11 @@ const Journal: React.FC = () => {
         </Controls>
       </Header>
       <Container>
-        {
-          <AddBtn onClick={openEditor}>
-            <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />{" "}
-          </AddBtn>
-        }
-        {isAddingEntry && <EntryForm />}
+        <AddBtn onClick={openEditor}>
+          <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />
+        </AddBtn>
+        
+        <EntryForm show={isAddingEntry}/>
         <EntriesList entries={DUMMY} />
       </Container>
 

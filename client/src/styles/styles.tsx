@@ -514,6 +514,7 @@ export const EntryInput = styled.input`
 export const TextArea = styled.textarea`
   font-family: 'Open Sans', sans-serif;
   width: 92%;
+  height: 5rem;
   padding: 5px;
   border: none;
   color: #444;
