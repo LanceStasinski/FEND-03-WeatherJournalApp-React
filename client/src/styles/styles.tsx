@@ -16,7 +16,7 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -474,7 +474,6 @@ export const SettingSelect = styled.select`
     outline: none;
     color: var(--primary-color);
     box-shadow: none;
-    
   }
 
   &:hover {
@@ -486,9 +485,48 @@ export const SettingFooter = styled.footer`
   display: flex;
   width: 100%;
   justify-content: space-between;
-`
+`;
 
 export const ErrorP = styled.p`
   color: var(--secondary-color);
   margin-top: -1rem;
+`;
+
+export const FormHeading = styled.h2`
+  font-family: "Flamenco", sans-serif;
+  color: var(--primary-color);
+  margin: 1rem 2.5%;
+`;
+
+export const EntryInput = styled.input`
+  font-family: "Open Sans", sans-serif;
+  width: 92%;
+  margin-bottom: 1rem;
+  color: #444;
+  padding: 5px;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  font-family: 'Open Sans', sans-serif;
+  width: 92%;
+  padding: 5px;
+  border: none;
+  color: #444;
+
+  &:focus {
+    outline: none;
+  }
+`
+
+export const FormBtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: -2.5%;
+  margin-bottom: 1rem;
 `

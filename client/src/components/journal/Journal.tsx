@@ -17,6 +17,7 @@ import gearIcon from "../../assets/gearIcon.png";
 import cloudIcon from "../../assets/cloudIcon.png";
 import EntriesList from "./EntriesList";
 import Settings from "./Settings";
+import EntryForm from "./EntryForm";
 
 export interface Entry {
   weather: {
@@ -105,9 +106,14 @@ const Logout = styled(Button)`
   }
 `;
 
+const AddBtn = styled(SettingsBtn)`
+  margin: 0;
+`;
+
 const Journal: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
+  const [isAddingEntry, setIsAddingEntry] = useState(false);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
@@ -116,12 +122,17 @@ const Journal: React.FC = () => {
 
   const zip = "04473";
 
+  const openEditor = () => {
+    setIsAddingEntry((prevState) => !prevState);
+  };
+
   const addEntry = () => {
     const responseData = sendRequest(
       `${process.env.REACT_APP_REST_API}/new-entry`,
       "POST",
       JSON.stringify({ zip }),
       {
+        Authorization: "Bearer " + authCtx.token,
         "Content-Type": "application/json",
       }
     );
@@ -148,7 +159,12 @@ const Journal: React.FC = () => {
         </Controls>
       </Header>
       <Container>
-        <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />
+        {
+          <AddBtn onClick={openEditor}>
+            <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />{" "}
+          </AddBtn>
+        }
+        {isAddingEntry && <EntryForm />}
         <EntriesList entries={DUMMY} />
       </Container>
 
