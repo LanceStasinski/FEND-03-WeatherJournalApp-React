@@ -1,4 +1,4 @@
-import React, { useContext, useState, FormEvent } from "react";
+import React, { useContext, useState, FormEvent, useEffect } from "react";
 import styled from "styled-components";
 
 import {
@@ -19,6 +19,7 @@ import Settings from "./Settings";
 import EntryForm from "./EntryForm";
 import ErrorModal from "../shared/ErrorModal";
 import { useHttpClient } from "../shared/hooks/http-hook";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 export interface Entry {
   weather: {
@@ -116,13 +117,14 @@ const Journal: React.FC = () => {
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const [isAddingEntry, setIsAddingEntry] = useState(false);
   const [formError, setFormError] = useState("");
+  const [entries, setEntries] = useState<Entries>();
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
     authCtx.logout();
   };
 
-  const openEditor = () => {
+  const toggleEditor = () => {
     setIsAddingEntry((prevState) => !prevState);
   };
 
@@ -137,6 +139,21 @@ const Journal: React.FC = () => {
   const clearFormError = () => {
     setFormError("");
   };
+
+  useEffect(() => {
+    const getEntries = async () => {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_REST_API}/entries`,
+        "GET",
+        null,
+        {
+          Authorization: "Bearer " + authCtx.token,
+        }
+      );
+      console.log(responseData);
+    };
+    getEntries();
+  }, [sendRequest, authCtx.token]);
 
   const addEntryHandler = async (
     subject: string,
@@ -162,7 +179,7 @@ const Journal: React.FC = () => {
         );
         if (responseData) {
           success = true;
-          openEditor();
+          toggleEditor();
         }
       } catch (error) {}
     }
@@ -173,6 +190,7 @@ const Journal: React.FC = () => {
     <React.Fragment>
       <ErrorModal error={formError} onClear={clearFormError} />
       <ErrorModal error={httpError} onClear={clearError} />
+      {isLoading && <LoadingSpinner />}
       <Settings show={settingsIsOpen} onCancel={closeSettings} />
       <Header>
         <User>{authCtx.username}</User>
@@ -184,7 +202,7 @@ const Journal: React.FC = () => {
         </Controls>
       </Header>
       <Container>
-        <AddBtn onClick={openEditor}>
+        <AddBtn onClick={toggleEditor}>
           <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />
         </AddBtn>
 
