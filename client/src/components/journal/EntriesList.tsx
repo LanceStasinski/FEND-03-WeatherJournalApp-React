@@ -9,7 +9,10 @@ const EntriesList: React.FC<{ entries: Entries }> = (props) => {
     <List>
       {props.entries.map((entry, index) => (
         <li key={entry._id}>
-          <EntryItem entry={entry} delay={0.25 * index}/>
+          <EntryItem
+            entry={entry}
+            delay={(props.entries.length - 1 - index) * 0.25}
+          />
         </li>
       ))}
     </List>

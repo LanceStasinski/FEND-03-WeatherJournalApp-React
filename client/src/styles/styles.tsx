@@ -237,6 +237,8 @@ export const List = styled.ul`
   list-style-type: none;
   padding: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 
 export const EntryWrapper = styled.div`

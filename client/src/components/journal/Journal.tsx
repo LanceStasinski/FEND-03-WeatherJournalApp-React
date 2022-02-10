@@ -117,7 +117,7 @@ const Journal: React.FC = () => {
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const [isAddingEntry, setIsAddingEntry] = useState(false);
   const [formError, setFormError] = useState("");
-  const [entries, setEntries] = useState<Entries>();
+  const [entries, setEntries] = useState<Entries>([]);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
@@ -150,7 +150,7 @@ const Journal: React.FC = () => {
           Authorization: "Bearer " + authCtx.token,
         }
       );
-      console.log(responseData);
+      setEntries(responseData.entries);
     };
     getEntries();
   }, [sendRequest, authCtx.token]);
@@ -179,6 +179,7 @@ const Journal: React.FC = () => {
         );
         if (responseData) {
           success = true;
+          setEntries((prevEntries) => [...prevEntries!, responseData.newEntry]);
           toggleEditor();
         }
       } catch (error) {}
@@ -207,7 +208,7 @@ const Journal: React.FC = () => {
         </AddBtn>
 
         <EntryForm show={isAddingEntry} onAddEntry={addEntryHandler} />
-        <EntriesList entries={DUMMY} />
+        <EntriesList entries={entries!} />
       </Container>
     </React.Fragment>
   );
