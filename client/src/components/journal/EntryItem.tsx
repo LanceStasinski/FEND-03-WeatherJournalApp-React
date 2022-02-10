@@ -5,7 +5,6 @@ import { Entry } from "./Journal";
 import Text from "./Text";
 import WeatherInfo from "./WeatherInfo";
 import { Card } from "../../styles/styles";
-import { Entries } from './Journal'
 
 interface StyleProps {
   delay: number;
@@ -18,7 +17,7 @@ const EntryCard = styled(Card)<StyleProps>`
   margin-bottom: 2rem;
   opacity: 0;
   animation: slideInRight 0.5s ease-out forwards;
-  animation-delay: ${props => props.delay + "s"};
+  animation-delay: ${(props) => props.delay + "s"};
 
   @media screen and (min-width: 990px) {
     height: 20rem;
@@ -38,11 +37,21 @@ const EntryCard = styled(Card)<StyleProps>`
   }
 `;
 
-const EntryItem: React.FC<{entry: Entry, delay: number, onDeleteEntry: (id: string) => Promise<void>}> = (props) => {
+const EntryItem: React.FC<{
+  entry: Entry;
+  delay: number;
+  onDeleteEntry: (id: string) => Promise<void>;
+  onUpdateEntry: (
+    subject: string,
+    message: string,
+    id: string
+  ) => Promise<void>;
+}> = (props) => {
   return (
     <EntryCard delay={props.delay}>
       <Text
         onDelete={props.onDeleteEntry}
+        onUpdate={props.onUpdateEntry}
         entryId={props.entry._id}
         date={props.entry.date}
         subject={props.entry.subject}

@@ -248,6 +248,15 @@ export const EntryWrapper = styled.div`
   height: 20rem;
 `;
 
+export const EntryForm = styled.form`
+  display: grid;
+  grid-template-rows: 20% 80%;
+  overflow: hidden;
+  height: 20rem;
+  padding: 0;
+  margin: 0;
+`
+
 export const SubjectWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -262,6 +271,20 @@ export const Subject = styled.h2`
   font-family: "Flamenco", sans-serif;
 `;
 
+export const SubjectInput = styled.input`
+  color: #444;
+  margin: 0;
+  font-family: "Flamenco", sans-serif;
+  font-size: 24px;
+  text-decoration: solid;
+  border: none;
+  background-color: var(--fourth-color);
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 export const Date = styled.p`
   font-family: "Open Sans", sans-serif;
   color: #666;
@@ -274,7 +297,7 @@ export const ButtonWrapper = styled.div`
   padding-right: 0;
   margin: 0.5rem;
 
-  @media screen and (min-width: 300px) {
+  @media screen and (min-width: 400px) {
     padding-right: 1rem;
     margin: 0;
   }
@@ -284,13 +307,18 @@ export const EntryAction = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 34px;
-  width: 34px;
+  height: 36px;
+  width: 36px;
   padding: 0;
   margin: 0 0 0 0.25rem;
   background-color: transparent;
   border: none;
   border-radius: 100px;
+
+  &:focus {
+    outline: none;
+    background-color: var(--fourth-color);
+  }
 
   &:hover {
     background-color: var(--fourth-color);
@@ -299,7 +327,7 @@ export const EntryAction = styled.button`
 `;
 
 export const ActionIcon = styled.img`
-  padding: 0;
+  padding: 0 10px;
   margin: 0;
   width: 24px;
   height: 24px;
@@ -324,10 +352,42 @@ export const TextBox = styled.div`
     border-radius: 5px;
   }
 
-  @media screen and (min-width: 300px) {
+  @media screen and (min-width: 400px) {
     margin-top: 1rem;
   }
 `;
+
+export const TextBoxInput = styled.textarea`
+  color: #444;
+  margin: 3rem 2rem 0 2rem;
+  padding: 0 0 2rem 0;
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  background-color: var(--fourth-color);
+  font-size: 16px;
+  scrollbar-width: thin;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+
+  @media screen and (min-width: 400px) {
+    margin-top: 1rem;
+  }
+` 
 
 export const EntryText = styled.p`
   color: #666;
@@ -510,7 +570,7 @@ export const EntryInput = styled.input`
 `;
 
 export const TextArea = styled.textarea`
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   width: 92%;
   height: 5rem;
   padding: 5px;
@@ -520,7 +580,7 @@ export const TextArea = styled.textarea`
   &:focus {
     outline: none;
   }
-`
+`;
 
 export const FormBtnWrapper = styled.div`
   width: 100%;
@@ -528,4 +588,4 @@ export const FormBtnWrapper = styled.div`
   justify-content: center;
   margin-left: -2.5%;
   margin-bottom: 1rem;
-`
+`;
