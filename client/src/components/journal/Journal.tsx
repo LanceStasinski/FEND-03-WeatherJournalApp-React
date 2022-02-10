@@ -187,6 +187,22 @@ const Journal: React.FC = () => {
     return success;
   };
 
+  const deleteEntryHandler = async (id: string) => {
+    try {
+      const response = await sendRequest(
+        `${process.env.REACT_APP_REST_API}/entries`,
+        "DELETE",
+        JSON.stringify({ id: id }),
+        {
+          Authorization: "Bearer " + authCtx.token,
+          "Content-Type": "application/json",
+        }
+      );
+      const idToDelete = response.id;
+      setEntries(entries.filter((entry) => entry._id !== idToDelete));
+    } catch (error) {}
+  };
+
   return (
     <React.Fragment>
       <ErrorModal error={formError} onClear={clearFormError} />
@@ -208,7 +224,7 @@ const Journal: React.FC = () => {
         </AddBtn>
 
         <EntryForm show={isAddingEntry} onAddEntry={addEntryHandler} />
-        <EntriesList entries={entries!} />
+        <EntriesList entries={entries!} onDeleteEntry={deleteEntryHandler} />
       </Container>
     </React.Fragment>
   );

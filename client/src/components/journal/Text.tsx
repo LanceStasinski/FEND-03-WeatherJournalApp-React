@@ -15,6 +15,7 @@ import {
   EntryAction,
   ActionIcon,
 } from "../../styles/styles";
+import { Entries } from "./Journal";
 
 const EntryHeader = styled(Header)`
   display: flex;
@@ -28,6 +29,8 @@ const EntryHeader = styled(Header)`
 `;
 
 interface Props {
+  onDelete: (id: string) => Promise<void>;
+  entryId: string;
   date: {
     month: string;
     day: number;
@@ -38,6 +41,8 @@ interface Props {
 }
 
 const Text: React.FC<Props> = (props) => {
+
+
   return (
     <EntryWrapper>
       <EntryHeader>
@@ -47,10 +52,10 @@ const Text: React.FC<Props> = (props) => {
         </SubjectWrapper>
         <ButtonWrapper>
           <EntryAction>
-            <ActionIcon src={editIcon} alt='edit icon' />
+            <ActionIcon src={editIcon} alt="edit icon" />
           </EntryAction>
-          <EntryAction>
-            <ActionIcon src={deleteIcon} alt='delete icon'/>
+          <EntryAction onClick={() => {props.onDelete(props.entryId)}}>
+            <ActionIcon src={deleteIcon} alt="delete icon" />
           </EntryAction>
         </ButtonWrapper>
       </EntryHeader>

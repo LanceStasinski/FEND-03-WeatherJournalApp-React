@@ -5,6 +5,7 @@ import { Entry } from "./Journal";
 import Text from "./Text";
 import WeatherInfo from "./WeatherInfo";
 import { Card } from "../../styles/styles";
+import { Entries } from './Journal'
 
 interface StyleProps {
   delay: number;
@@ -37,10 +38,12 @@ const EntryCard = styled(Card)<StyleProps>`
   }
 `;
 
-const EntryItem: React.FC<{entry: Entry, delay: number}> = (props) => {
+const EntryItem: React.FC<{entry: Entry, delay: number, onDeleteEntry: (id: string) => Promise<void>}> = (props) => {
   return (
     <EntryCard delay={props.delay}>
       <Text
+        onDelete={props.onDeleteEntry}
+        entryId={props.entry._id}
         date={props.entry.date}
         subject={props.entry.subject}
         text={props.entry.text}
