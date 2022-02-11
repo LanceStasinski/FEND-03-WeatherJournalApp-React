@@ -59,8 +59,8 @@ export const useAuth = () => {
     setToken("");
     setTokenExpiration(undefined);
     setUserId("");
-    setUnitPreference('imperial');
-    setZipCode('no zip');
+    setUnitPreference("imperial");
+    setZipCode("");
     localStorage.removeItem("user");
   }, []);
 
