@@ -24,10 +24,57 @@ export const Container = styled.div`
   align-items: center;
   width: 90%;
   margin-left: 5%;
+  margin-bottom: 50px;
 
   @media (min-width: 768px) {
     width: 70%;
     margin-left: 15%;
+  }
+`;
+
+export const MainFooter = styled.footer`
+  position: fixed;
+  opacity: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem 0;
+  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+  animation: appearSlow 3s linear forwards;
+
+  @keyframes appearSlow {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
+export const FooterLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  font-family: "Open Sans", sans-serif;
+
+  &:hover {
+    animation: changeToOrange 0.3s forwards linear;
+  }
+
+  &:visited {
+    color: #fff;
+  }
+
+  @keyframes changeToOrange {
+    from {
+      color: #fff;
+    }
+    to {
+      color: var(--secondary-color);
+    }
   }
 `;
 
@@ -56,7 +103,7 @@ export const NoEntriesH2 = styled.h2`
   color: #fff;
   font-family: "Open Sans", sans-serif;
   text-align: center;
-`
+`;
 
 export const Card = styled.div`
   margin: 0;
@@ -261,7 +308,7 @@ export const EntryForm = styled.form`
   height: 20rem;
   padding: 0;
   margin: 0;
-`
+`;
 
 export const SubjectWrapper = styled.div`
   display: flex;
@@ -367,7 +414,7 @@ export const TextBoxInput = styled.textarea`
   color: #444;
   margin: 3rem 2rem 0 2rem;
   padding: 0 0 2rem 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   border: none;
   background-color: var(--fourth-color);
   font-size: 16px;
@@ -393,7 +440,7 @@ export const TextBoxInput = styled.textarea`
   @media screen and (min-width: 400px) {
     margin-top: 1rem;
   }
-` 
+`;
 
 export const EntryText = styled.p`
   color: #666;
@@ -600,23 +647,23 @@ export const WarningModalFooter = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-`
+`;
 
 export const ErrorButton = styled(Button)`
-background-color: var(--secondary-color);
-text-align: center;
-margin: 0;
+  background-color: var(--secondary-color);
+  text-align: center;
+  margin: 0;
 
-&:hover {
-  animation: changeColor 300ms linear forwards;
-}
+  &:hover {
+    animation: changeColor 300ms linear forwards;
+  }
 
-@keyframes changeColor {
-  from {
-    background-color: var(--secondary-color);
+  @keyframes changeColor {
+    from {
+      background-color: var(--secondary-color);
+    }
+    to {
+      background-color: var(--primary-color);
+    }
   }
-  to {
-    background-color: var(--primary-color);
-  }
-}
-`
+`;

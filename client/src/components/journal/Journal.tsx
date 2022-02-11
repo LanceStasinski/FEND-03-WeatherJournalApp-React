@@ -12,7 +12,9 @@ import {
   SettingsBtn,
   WarningModalFooter,
   ErrorButton,
-  NoEntriesH2
+  NoEntriesH2,
+  MainFooter,
+  FooterLink
 } from "../../styles/styles";
 import { AuthContext } from "../shared/context/auth-context";
 import gearIcon from "../../assets/gearIcon.png";
@@ -277,6 +279,14 @@ const Journal: React.FC = () => {
           onUpdateEntry={updateEntryHandler}
         />
       </Container>
+      <MainFooter>
+          <FooterLink href="https://lancestasinski.herokuapp.com">
+            lancestasinski.herokuapp.com
+          </FooterLink>
+          <FooterLink href="https://openweathermap.org/api">
+            OpenWeatherMap
+          </FooterLink>
+        </MainFooter>
     </React.Fragment>
   );
 };
