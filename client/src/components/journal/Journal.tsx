@@ -164,7 +164,6 @@ const Journal: React.FC = () => {
   };
 
   const deleteEntryHandler = async () => {
-    console.log(entryToDeleteId);
     try {
       const response = await sendRequest(
         `${process.env.REACT_APP_REST_API}/entries`,

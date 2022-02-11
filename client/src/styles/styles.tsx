@@ -55,6 +55,7 @@ export const Title = styled.h1`
 export const NoEntriesH2 = styled.h2`
   color: #fff;
   font-family: "Open Sans", sans-serif;
+  text-align: center;
 `
 
 export const Card = styled.div`
