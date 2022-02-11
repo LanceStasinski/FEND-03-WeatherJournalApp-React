@@ -1,4 +1,4 @@
-import React, { useContext, useState, createRef, FormEvent } from "react";
+import React, { useContext, useState, createRef, FormEvent, useEffect } from "react";
 import styled from "styled-components";
 
 import Modal from "../shared/Modal";
@@ -21,18 +21,32 @@ const SettingsForm = styled(Form)`
   margin: 0;
 `;
 
-const Settings: React.FC<{ show: boolean; onCancel: () => void }> = (props) => {
+const Settings: React.FC<{
+  show: boolean;
+  onCancel: () => void;
+  header: string;
+  initial: boolean;
+}> = (props) => {
   const authCtx = useContext(AuthContext);
-  const [zip, setZip] = useState(authCtx.zipCode);
-  const [units, setUnits] = useState(authCtx.unitPreference);
-  const [formError, setFormError] = useState(false);
+  const [zip, setZip] = useState('');
+  const [units, setUnits] = useState('');
+  const [formError, setFormError] = useState(props.initial ? true : false);
   const zipRef = createRef<HTMLInputElement>();
   const unitsRef = createRef<HTMLSelectElement>();
   const { sendRequest, isLoading, httpError, clearError } = useHttpClient();
 
+  useEffect(() => {
+    setZip(authCtx.zipCode);
+    setUnits(authCtx.unitPreference)
+  },[authCtx.zipCode, authCtx.unitPreference])
+
   const zipChangeHandler = () => {
     setZip(zipRef.current!.value);
-    if (zipRef.current!.value.length === 0) setFormError(true);
+    if (
+      zipRef.current!.value.length === 0 ||
+      zipRef.current!.value === "no zip"
+    )
+      setFormError(true);
     else setFormError(false);
   };
 
@@ -63,16 +77,22 @@ const Settings: React.FC<{ show: boolean; onCancel: () => void }> = (props) => {
       {!httpError && (
         <Modal
           show={props.show}
-          onCancel={props.onCancel}
-          header="SETTINGS"
+          onCancel={props.initial ? () => {} : props.onCancel}
+          header={props.header}
           footer={
-            <SettingFooter>
+            <SettingFooter
+              style={{
+                justifyContent: props.initial ? "center" : "space-between",
+              }}
+            >
               <Button type="button" onClick={submitHandler}>
                 Save
               </Button>
-              <Button type="button" onClick={props.onCancel}>
-                Cancel
-              </Button>
+              {!props.initial && (
+                <Button type="button" onClick={props.onCancel}>
+                  Cancel
+                </Button>
+              )}
             </SettingFooter>
           }
         >
@@ -90,7 +110,9 @@ const Settings: React.FC<{ show: boolean; onCancel: () => void }> = (props) => {
               />
             </SettingField>
             {formError && (
-              <ErrorP>ZIP code must be at least 1 character long.</ErrorP>
+              <ErrorP style={{ alignSelf: "flex-start" }}>
+                Please enter a zip code.
+              </ErrorP>
             )}
             <SettingField>
               <Label htmlFor="units">Prefered Units:</Label>

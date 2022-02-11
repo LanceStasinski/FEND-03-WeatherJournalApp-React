@@ -74,7 +74,7 @@ const AddBtn = styled(SettingsBtn)`
 
 const DeleteButton = styled(ErrorButton)`
   margin-top: 1rem;
-`
+`;
 
 const Journal: React.FC = () => {
   const authCtx = useContext(AuthContext);
@@ -84,6 +84,7 @@ const Journal: React.FC = () => {
   const [entries, setEntries] = useState<Entries>([]);
   const [entryToDeleteId, setEntryToDeleteId] = useState<string | null>(null);
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [showInitialSettings, setShowInitialSettings] = useState(false);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
@@ -105,6 +106,14 @@ const Journal: React.FC = () => {
   const clearFormError = () => {
     setFormError("");
   };
+
+  const closeInitialSettings = () => {
+    setShowInitialSettings(false);
+  };
+
+  useEffect(() => {
+    if (authCtx.zipCode === 'no zip') setShowInitialSettings(true)
+  }, [authCtx.zipCode])
 
   useEffect(() => {
     const getEntries = async () => {
@@ -218,7 +227,18 @@ const Journal: React.FC = () => {
       <ErrorModal error={formError} onClear={clearFormError} />
       <ErrorModal error={httpError} onClear={clearError} />
       {isLoading && <LoadingSpinner />}
-      <Settings show={settingsIsOpen} onCancel={closeSettings} />
+      <Settings
+        show={showInitialSettings}
+        onCancel={closeInitialSettings}
+        header="Welcome! Please choose your settings"
+        initial={true}
+      />
+      <Settings
+        show={settingsIsOpen}
+        onCancel={closeSettings}
+        header="Settings"
+        initial={false}
+      />
       <Modal
         show={showWarningModal}
         onCancel={closeModalHandler}

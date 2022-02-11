@@ -37,9 +37,9 @@ export const Title = styled.h1`
   color: var(--primary-color);
   text-align: center;
   font-size: 50px;
-  animation: changeColor 7s infinite;
+  animation: changeTextColor 7s infinite;
 
-  @keyframes changeColor {
+  @keyframes changeTextColor {
     0% {
       color: var(--primary-color);
     }
@@ -542,7 +542,6 @@ export const SettingSelect = styled.select`
 export const SettingFooter = styled.footer`
   display: flex;
   width: 100%;
-  justify-content: space-between;
 `;
 
 export const ErrorP = styled.p`
