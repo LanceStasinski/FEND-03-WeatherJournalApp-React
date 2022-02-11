@@ -12,6 +12,7 @@ import {
   SettingsBtn,
   WarningModalFooter,
   ErrorButton,
+  NoEntriesH2
 } from "../../styles/styles";
 import { AuthContext } from "../shared/context/auth-context";
 import gearIcon from "../../assets/gearIcon.png";
@@ -269,7 +270,7 @@ const Journal: React.FC = () => {
         <AddBtn onClick={toggleEditor}>
           <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />
         </AddBtn>
-
+        {entries.length < 1 && !isAddingEntry && <NoEntriesH2>Click on the blue cloud to get started!</NoEntriesH2>}
         <EntryForm show={isAddingEntry} onAddEntry={addEntryHandler} />
         <EntriesList
           entries={entries!}

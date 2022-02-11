@@ -52,6 +52,11 @@ export const Title = styled.h1`
   }
 `;
 
+export const NoEntriesH2 = styled.h2`
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+`
+
 export const Card = styled.div`
   margin: 0;
   border-radius: 10px;
