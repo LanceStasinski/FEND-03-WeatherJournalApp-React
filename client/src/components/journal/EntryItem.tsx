@@ -40,7 +40,7 @@ const EntryCard = styled(Card)<StyleProps>`
 const EntryItem: React.FC<{
   entry: Entry;
   delay: number;
-  onDeleteEntry: (id: string) => Promise<void>;
+  onOpenWarningModal: (id: string) => void;
   onUpdateEntry: (
     subject: string,
     message: string,
@@ -50,7 +50,7 @@ const EntryItem: React.FC<{
   return (
     <EntryCard delay={props.delay}>
       <Text
-        onDelete={props.onDeleteEntry}
+        onOpenWarningModal={props.onOpenWarningModal}
         onUpdate={props.onUpdateEntry}
         entryId={props.entry._id}
         date={props.entry.date}

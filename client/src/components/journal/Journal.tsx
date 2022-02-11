@@ -10,6 +10,8 @@ import {
   CloudIcon,
   Container,
   SettingsBtn,
+  WarningModalFooter,
+  ErrorButton,
 } from "../../styles/styles";
 import { AuthContext } from "../shared/context/auth-context";
 import gearIcon from "../../assets/gearIcon.png";
@@ -20,6 +22,7 @@ import EntryForm from "./EntryForm";
 import ErrorModal from "../shared/ErrorModal";
 import { useHttpClient } from "../shared/hooks/http-hook";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import Modal from "../shared/Modal";
 
 export interface Entry {
   weather: {
@@ -69,12 +72,18 @@ const AddBtn = styled(SettingsBtn)`
   margin: 0;
 `;
 
+const DeleteButton = styled(ErrorButton)`
+  margin-top: 1rem;
+`
+
 const Journal: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const [isAddingEntry, setIsAddingEntry] = useState(false);
   const [formError, setFormError] = useState("");
   const [entries, setEntries] = useState<Entries>([]);
+  const [entryToDeleteId, setEntryToDeleteId] = useState<string | null>(null);
+  const [showWarningModal, setShowWarningModal] = useState(false);
   const { isLoading, httpError, sendRequest, clearError } = useHttpClient();
 
   const logoutHandler = () => {
@@ -144,20 +153,32 @@ const Journal: React.FC = () => {
     return success;
   };
 
-  const deleteEntryHandler = async (id: string) => {
+  const deleteEntryHandler = async () => {
+    console.log(entryToDeleteId);
     try {
       const response = await sendRequest(
         `${process.env.REACT_APP_REST_API}/entries`,
         "DELETE",
-        JSON.stringify({ id: id }),
+        JSON.stringify({ id: entryToDeleteId }),
         {
           Authorization: "Bearer " + authCtx.token,
           "Content-Type": "application/json",
         }
       );
-      const idToDelete = response.id;
-      setEntries(entries.filter((entry) => entry._id !== idToDelete));
+      setEntryToDeleteId(null);
+      setShowWarningModal(false);
+      setEntries(entries.filter((entry) => entry._id !== response.id));
     } catch (error) {}
+  };
+
+  const openModalHandler = (id: string) => {
+    setEntryToDeleteId(id);
+    setShowWarningModal(true);
+  };
+
+  const closeModalHandler = () => {
+    setShowWarningModal(false);
+    setEntryToDeleteId(null);
   };
 
   const updateEntryHandler = async (
@@ -182,7 +203,9 @@ const Journal: React.FC = () => {
         );
         if (response) {
           const tempEntries = [...entries];
-          const indexToUpdate = tempEntries.findIndex((entry) => entry._id === id);
+          const indexToUpdate = tempEntries.findIndex(
+            (entry) => entry._id === id
+          );
           tempEntries[indexToUpdate] = response.updatedEntry;
           setEntries(tempEntries);
         }
@@ -196,6 +219,23 @@ const Journal: React.FC = () => {
       <ErrorModal error={httpError} onClear={clearError} />
       {isLoading && <LoadingSpinner />}
       <Settings show={settingsIsOpen} onCancel={closeSettings} />
+      <Modal
+        show={showWarningModal}
+        onCancel={closeModalHandler}
+        header="Delete Entry?"
+        footer={
+          <WarningModalFooter>
+            <Button type="button" onClick={closeModalHandler}>
+              Cancel
+            </Button>
+            <DeleteButton type="button" onClick={deleteEntryHandler}>
+              Delete
+            </DeleteButton>
+          </WarningModalFooter>
+        }
+      >
+        <p>Are you sure you want to delete this entry?</p>
+      </Modal>
       <Header>
         <User>{authCtx.username}</User>
         <Controls>
@@ -213,7 +253,7 @@ const Journal: React.FC = () => {
         <EntryForm show={isAddingEntry} onAddEntry={addEntryHandler} />
         <EntriesList
           entries={entries!}
-          onDeleteEntry={deleteEntryHandler}
+          onOpenWarningModal={openModalHandler}
           onUpdateEntry={updateEntryHandler}
         />
       </Container>

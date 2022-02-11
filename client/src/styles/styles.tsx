@@ -589,3 +589,29 @@ export const FormBtnWrapper = styled.div`
   margin-left: -2.5%;
   margin-bottom: 1rem;
 `;
+
+export const WarningModalFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+`
+
+export const ErrorButton = styled(Button)`
+background-color: var(--secondary-color);
+text-align: center;
+margin: 0;
+
+&:hover {
+  animation: changeColor 300ms linear forwards;
+}
+
+@keyframes changeColor {
+  from {
+    background-color: var(--secondary-color);
+  }
+  to {
+    background-color: var(--primary-color);
+  }
+}
+`

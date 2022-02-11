@@ -3,26 +3,9 @@ import styled from "styled-components";
 
 
 import Modal from "./Modal";
-import { Button } from "../../styles/styles";
+import { ErrorButton } from "../../styles/styles";
 
-const ErrorButton = styled(Button)`
-  background-color: var(--secondary-color);
-  text-align: center;
-  margin: 0;
 
-  &:hover {
-    animation: turnBlue 300ms linear forwards;
-  }
-
-  @keyframes turnBlue {
-    from {
-      background-color: var(--secondary-color);
-    }
-    to {
-      background-color: var(--primary-color);
-    }
-  }
-`
 
 const StyledP = styled.p`
   color: #666;

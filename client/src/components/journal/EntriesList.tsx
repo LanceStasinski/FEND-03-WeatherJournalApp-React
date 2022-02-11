@@ -6,7 +6,7 @@ import EntryItem from "./EntryItem";
 
 const EntriesList: React.FC<{
   entries: Entries;
-  onDeleteEntry: (id: string) => Promise<void>;
+  onOpenWarningModal: (id: string) => void;
   onUpdateEntry: (
     subject: string,
     message: string,
@@ -18,7 +18,7 @@ const EntriesList: React.FC<{
       {props.entries.map((entry, index) => (
         <li key={entry._id}>
           <EntryItem
-            onDeleteEntry={props.onDeleteEntry}
+            onOpenWarningModal={props.onOpenWarningModal}
             onUpdateEntry={props.onUpdateEntry}
             entry={entry}
             delay={(props.entries.length - 1 - index) * 0.25}

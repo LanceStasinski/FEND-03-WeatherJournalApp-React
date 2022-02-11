@@ -32,7 +32,7 @@ const EntryHeader = styled(Header)`
 `;
 
 interface Props {
-  onDelete: (id: string) => Promise<void>;
+  onOpenWarningModal: (id: string) => void;
   onUpdate: (subject: string, message: string, id: string) => Promise<void>;
   entryId: string;
   date: {
@@ -77,6 +77,11 @@ const Text: React.FC<Props> = (props) => {
     setIsUpdating(false);
   };
 
+  const showWarningModalHandler = (e: FormEvent) => {
+    e.preventDefault();
+    props.onOpenWarningModal(props.entryId);
+  };
+
   return (
     <React.Fragment>
       {!isUpdating && (
@@ -90,11 +95,7 @@ const Text: React.FC<Props> = (props) => {
               <EntryAction onClick={editEntry}>
                 <ActionIcon src={editIcon} alt="edit icon" />
               </EntryAction>
-              <EntryAction
-                onClick={() => {
-                  props.onDelete(props.entryId);
-                }}
-              >
+              <EntryAction onClick={showWarningModalHandler}>
                 <ActionIcon src={trashIcon} alt="delete icon" />
               </EntryAction>
             </ButtonWrapper>
@@ -123,11 +124,7 @@ const Text: React.FC<Props> = (props) => {
               <EntryAction onClick={cancelEditEntry}>
                 <ActionIcon src={deleteIcon} alt="cancel icon" />
               </EntryAction>
-              <EntryAction
-                onClick={() => {
-                  props.onDelete(props.entryId);
-                }}
-              >
+              <EntryAction onClick={showWarningModalHandler}>
                 <ActionIcon src={trashIcon} alt="delete icon" />
               </EntryAction>
             </ButtonWrapper>
