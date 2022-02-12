@@ -262,13 +262,13 @@ const Journal: React.FC = () => {
         <User>{authCtx.username}</User>
         <Controls>
           <Logout onClick={logoutHandler}>Logout</Logout>
-          <SettingsBtn onClick={openSettings}>
+          <SettingsBtn title="Settings" onClick={openSettings}>
             <SettingIcon src={gearIcon} alt="gear icon" />
           </SettingsBtn>
         </Controls>
       </Header>
       <Container>
-        <AddBtn onClick={toggleEditor}>
+        <AddBtn title="Add entry" onClick={toggleEditor}>
           <CloudIcon src={cloudIcon} alt="Cloud with plus symbol" />
         </AddBtn>
         {entries.length < 1 && !isAddingEntry && <NoEntriesH2>Click on the blue cloud to get started!</NoEntriesH2>}
