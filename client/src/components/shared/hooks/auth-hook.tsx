@@ -23,7 +23,7 @@ export const useAuth = () => {
         expirationDate || new Date(new Date().getTime() + 1000 * 60 * 120);
       setTokenExpiration(tokenExpiration);
       localStorage.setItem(
-        "user",
+        "weatherUser",
         JSON.stringify({
           userId: uid,
           token,
@@ -38,7 +38,7 @@ export const useAuth = () => {
   );
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("user") as string);
+    const storedData = JSON.parse(localStorage.getItem("weatherUser") as string);
     if (
       storedData &&
       storedData.token &&
@@ -61,16 +61,16 @@ export const useAuth = () => {
     setUserId("");
     setUnitPreference("imperial");
     setZipCode("");
-    localStorage.removeItem("user");
+    localStorage.removeItem("weatherUser");
   }, []);
 
   const updatePreferences = useCallback((preference, zipCode) => {
     setUnitPreference(preference);
     setZipCode(zipCode);
-    const storedData = JSON.parse(localStorage.getItem("user") as string);
+    const storedData = JSON.parse(localStorage.getItem("weatherUser") as string);
     storedData.unitPreference = preference;
     storedData.zipCode = zipCode;
-    localStorage.setItem("user", JSON.stringify(storedData));
+    localStorage.setItem("weatherUser", JSON.stringify(storedData));
   }, []);
 
   useEffect(() => {
