@@ -143,6 +143,7 @@ export const StyledInput = styled.input`
   font-family: "Open Sans", sans-serif;
   border: none;
   padding: 0 5px;
+  border-radius: 0;
   width: 100%;
   color: #fff;
   &::placeholder {

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import "./App.css";
-import { Backdrop } from "./styles/styles";
+import { Backdrop, MainFooter, FooterLink } from "./styles/styles";
 import GlobalStyles from "./styles/global";
 import { AuthContext } from "./components/shared/context/auth-context";
 import LoadingSpinner from "./components/shared/LoadingSpinner";
@@ -58,6 +58,14 @@ function App() {
         <main>
           <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
         </main>
+        <MainFooter>
+          <FooterLink href="https://lancestasinski.herokuapp.com">
+            lancestasinski.herokuapp.com
+          </FooterLink>
+          <FooterLink href="https://openweathermap.org/api">
+            OpenWeatherMap
+          </FooterLink>
+        </MainFooter>
       </BrowserRouter>
     </AuthContext.Provider>
   );
