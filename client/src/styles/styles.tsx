@@ -390,7 +390,7 @@ export const ActionIcon = styled.img`
 export const TextBox = styled.div`
   overflow-y: scroll;
   padding: 0 2rem 2rem 2rem;
-  margin-top: 3rem;
+  margin-top: 4.5rem;
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {

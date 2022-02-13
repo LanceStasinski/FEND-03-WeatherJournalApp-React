@@ -38,7 +38,9 @@ export const useAuth = () => {
   );
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("weatherUser") as string);
+    const storedData = JSON.parse(
+      localStorage.getItem("weatherUser") as string
+    );
     if (
       storedData &&
       storedData.token &&
@@ -67,7 +69,9 @@ export const useAuth = () => {
   const updatePreferences = useCallback((preference, zipCode) => {
     setUnitPreference(preference);
     setZipCode(zipCode);
-    const storedData = JSON.parse(localStorage.getItem("weatherUser") as string);
+    const storedData = JSON.parse(
+      localStorage.getItem("weatherUser") as string
+    );
     storedData.unitPreference = preference;
     storedData.zipCode = zipCode;
     localStorage.setItem("weatherUser", JSON.stringify(storedData));
