@@ -75,6 +75,8 @@ This project was built on a Windows OS with the following tools installed:
 
 ## Scripts
 
+First, `cd` into the `client` directory.
+
 * `yarn install` will install this project's dependencies
 * `yarn build` will create a production build of this project
 * `yarn start` will start a development server for this project
