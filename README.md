@@ -99,7 +99,6 @@ This project could be improved in a few ways.
 
 * Fetch the user's location and initially set their zip code with their current location
 * Add unit tests
-* Add a custom favicon
 * Host the project indepently from my website
 
 ## License
@@ -111,3 +110,4 @@ This project is licensed under the MIT License - [https://mit-license.org/](http
 * [styled-components](https://styled-components.com/) for their thorough documentation
 * [Udacity's](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011) front end nanodegree program for general project idea
 * [iconmonstr](https://iconmonstr.com/) for making great icons free to use
+* [OpenWeatherMap](https://openweathermap.org/api) for great documentation and their free API tier
